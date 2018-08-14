@@ -13,7 +13,7 @@ def test_value_gets_added():
 
 
 def test_list_can_add_strings():
-    expected = [1, 2, a, 4, 5]
-    actual = insert_shift_array([1, 2, 4, 5], a)
+    expected = [1, 2, 'a', 4, 5]
+    actual = insert_shift_array([1, 2, 4, 5], 'a')
     assert expected == actual
 
