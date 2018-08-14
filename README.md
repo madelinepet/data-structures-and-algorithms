@@ -9,3 +9,4 @@ Start up your python environment, install dependencies, run the code in your ter
 1. Data Structures
 2. Algorithms
 3. Challenges
+    -Array_shift (August 14th 2018)
