@@ -13,4 +13,5 @@ Start up your python environment, install dependencies, run the code in your ter
     - Array_shift (August 14th 2018)
     - Array Binary Tree (August 15th 2018)
     - Linked List Insertion(Aug 20th, 2018)
+    - Linked List Merge(Aug22, 2018)
 
