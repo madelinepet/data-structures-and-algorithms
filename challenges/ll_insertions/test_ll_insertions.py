@@ -1,4 +1,4 @@
-from .linked_list import LinkedList
+from .ll_insertions import LinkedList
 import pytest
 
 
@@ -75,7 +75,7 @@ def test_append_after_places_new_node_at_end(small_list):
     """ Test if we added the value to the end of the list
     """
     a = 42
-    expected = len(small_list) + 1
+    expected = len(small_list)
     small_list.append(a)
     actual = len(small_list)
     assert small_list.includes(a)
