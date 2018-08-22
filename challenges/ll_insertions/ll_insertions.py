@@ -1,4 +1,3 @@
-from .ll_insertions import LinkedList
 import pytest
 
 from .node import Node
@@ -63,26 +62,37 @@ class LinkedList(object):
             current_node = current_node._next
         return False
 
+    def append(self, val):
+        """
+        Similar to insert, but appends to end of LL
+        """
+        current = self.head
+        while current._next is not None:
+            current = current._next
 
-def append(self, val):
-    """ Docstring
-    """
-    current = self.head
-    while current._next is not None:
-        current = current._next
-    #current node is last node in list
-    new_node = Node(val, _next=None)
-    current._next = new_node
+        new_node = Node(val, _next=None)
+        current._next = new_node
 
+    def insert_before(self, val, target):
+        """
+        Inserts before a given value
+        """
+        if self.head.val == target:
+            self.head = Node(val, self.head)
+            return self.head
+        else:
+            current = self.head
+            while current._next.val != target:
+                current = current._next
+            current._next = Node(val, current._next)
+            return current._next
 
-def insert_before(self, val, target):
-    """ Docstring
-    """
-    current = self.head
-    pass
-
-
-def insert_after(self, val, target):
-    """ Docstring
-    """
-    pass
+    def insert_after(self, val, target):
+        """
+        Inserts after a given value
+        """
+        current = self.head
+        while current.val != target:
+            current = current._next
+        current._next = Node(val, current)
+        return current._next
