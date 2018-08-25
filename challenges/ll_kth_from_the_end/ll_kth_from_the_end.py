@@ -62,42 +62,53 @@ class LinkedList(object):
             current_node = current_node._next
         return False
 
+    def append(self, val):
+        """ Docstring
+        """
+        current = self.head
+        while current._next is not None:
+            current = current._next
+        # current node is last node in list
+        new_node = Node(val, _next=None)
+        current._next = new_node
 
-def append(self, val):
-    """ Docstring
-    """
-    current = self.head
-    while current._next is not None:
-        current = current._next
-    # current node is last node in list
-    new_node = Node(val, _next=None)
-    current._next = new_node
+    def insert_before(self, val, target):
+        """
+        Inserts before a given value
+        """
+        if self.head.val == target:
+            self.head = Node(val, self.head)
+            return self.head
+        else:
+            current = self.head
+            while current._next.val != target:
+                current = current._next
+            current._next = Node(val, current._next)
+            return current._next
 
+    def insert_after(self, val, target):
+        """
+        Inserts after a given value
+        """
+        current = self.head
+        while current.val != target:
+            current = current._next
+        current._next = Node(val, current)
+        return current._next
 
-def insert_before(self, val, target):
-    """ Docstring
-    """
-    current = self.head
-    pass
-
-
-def insert_after(self, val, target):
-    """ Docstring
-    """
-    pass
-
-
-def ll_kth_from_end(self, k):
-    counter = 0
-    current_node = self.head
-    while current_node._next is not None:
-        counter = counter + 1
-        current_node = current_node._next
-    if k > counter:
-        return('exception')
-    r = counter - (k - 1)
-    current_node = self.head
-    while counter < r:
-        current_node = current_node._next
-        counter = counter + 1
-    return current_node.val
+    def ll_kth_from_the_end(self, k):
+        """ Returns value kth from the end of the ll
+        """
+        counter = 0
+        current_node = self.head
+        while current_node._next is not None:
+            counter = counter + 1
+            current_node = current_node._next
+        if k > counter:
+            return('exception')
+        r = counter - (k - 1)
+        current_node = self.head
+        while counter < r:
+            current_node = current_node._next
+            counter = counter + 1
+        return current_node.val
