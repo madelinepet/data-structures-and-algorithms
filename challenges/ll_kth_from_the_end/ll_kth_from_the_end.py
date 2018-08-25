@@ -96,7 +96,7 @@ class LinkedList(object):
         current._next = Node(val, current)
         return current._next
 
-    def ll_kth_from_end(self, k):
+    def ll_kth_from_the_end(self, k):
         """ Returns value kth from the end of the ll
         """
         counter = 0

@@ -1,5 +1,4 @@
 from .ll_kth_from_the_end import LinkedList
-import ll_kth_from_the_end
 import pytest
 
 
@@ -76,7 +75,7 @@ def test_append_after_places_new_node_at_end(small_list):
     """ Test if we added the value to the end of the list
     """
     a = 42
-    expected = len(small_list) + 1
+    expected = len(small_list)
     small_list.append(a)
     actual = len(small_list)
     assert small_list.includes(a)
@@ -84,33 +83,36 @@ def test_append_after_places_new_node_at_end(small_list):
 
 
 def test_ll_kth_from_end_item_not_in_list(small_list):
-    expected = 'Exemption'
-    actual = ll_kth_from_the_end(5)
+    """ Test that when item  not in list, returns exception
+    """
+    expected = 'exception'
+    actual = LinkedList.ll_kth_from_the_end(small_list, 5)
     assert expected == actual
 
 
 def test_ll_kth_from_end_last_num(small_list):
-    expected = 4
-    actual = ll_kth_from_the_end(0)
+    """ Test that when item is the last num
+    """
+    expected = 3
+    actual = LinkedList.ll_kth_from_the_end(small_list, 0)
     assert expected == actual
 
 
 def test_ll_kth_from_end_item_first_num(small_list):
-    expected = 1
-    actual = ll_kth_from_the_end(3)
+    """ Test when item is first num in list
+    """
+    expected = 4
+    actual = LinkedList.ll_kth_from_the_end(small_list, 3)
     assert expected == actual
 
 
 def test_ll_kth_from_end_item_middle_num(small_list):
-    expected = 3
-    actual = ll_kth_from_the_end(1)
+    """ Test when item is somewhere in the middle
+    """
+    expected = 4
+    actual = LinkedList.ll_kth_from_the_end(small_list, 1)
     assert expected == actual
 
-
-def test_ll_kth_from_end_empty_list(empty_list):
-    expexted = 'Exemption'
-    actual = ll_kth_from_the_end(5)
-    assert expexted == actual
 
 
 
