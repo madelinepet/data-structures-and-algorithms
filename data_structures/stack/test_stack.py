@@ -11,10 +11,10 @@ def empty_stack():
 @pytest.fixture
 def small_stack():
     stack = Stack()
-    stack.insert(1)
-    stack.insert(2)
-    stack.insert(3)
-    stack.insert(4)
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    stack.push(4)
     return stack
 
 

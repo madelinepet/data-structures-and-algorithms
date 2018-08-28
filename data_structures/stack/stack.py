@@ -14,9 +14,9 @@ class Stack(object):
         if potential_iterable is not None:
             try:
                 for i in potential_iterable:
-                    self.insert(i)
+                    self.pop(i)
             except TypeError:
-                self.insert(potential_iterable)
+                self.pop(potential_iterable)
 
     def __str__(self):
             """ Returns a string of the top and the length

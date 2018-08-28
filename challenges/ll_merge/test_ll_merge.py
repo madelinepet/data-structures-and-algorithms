@@ -125,6 +125,14 @@ def test_linked_list_merge_merges_lists_equal_lengths(small_list, empty_list):
     assert expected == actual
 
 
+def test_linked_list_merge_merges_lists_equal_lengths_other(small_list, empty_list):
+    """ Test empty list and list input gives back list
+    """
+    expected = small_list
+    actual = LinkedList.ll_merge(empty_list, small_list)
+    assert expected == actual
+
+
 def test_linked_list_ll_merge_exists():
     """ Test ll_merge exists
     """

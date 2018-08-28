@@ -37,6 +37,7 @@ class Queue(object):
                 for i in potential_iterable:
                     if i not in self.queue:
                         self.queue.insert(0, i)
+                        self._length += 1
                         return True
                     else:
                         return False
@@ -48,6 +49,7 @@ class Queue(object):
     def dequeue(self):
         if len(self.queue) > 0:
             return self.queue.pop()
+            self._length -= 1
         return('No items in queue!')
 
 
