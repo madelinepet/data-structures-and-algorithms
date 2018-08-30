@@ -1,4 +1,4 @@
-from .queue_with_stacks import (Node, Stack, Queue)
+from .queue_with_stacks import (Stack, Queue)
 
 import pytest
 
@@ -61,12 +61,6 @@ def test_insert_successful(empty_stack):
     assert empty_stack.top.val == 25
 
 
-def test_length_of_stack_increases_on_insertion(empty_stack):
-    assert empty_stack._length == 1
-    empty_stack.push(25)
-    assert len(empty_stack) == 1
-
-
 def test_length_of_stack_decreases_on_pop(empty_stack):
     assert empty_stack._length == 0
     empty_stack.push(25)
@@ -97,11 +91,9 @@ def test_length_of_queue_increases_on_insertion(empty_queue):
     assert empty_queue._length == 1
 
 
-def test_length_of_queue_decreases_on_pop(empty_queue):
-    assert len(empty_queue) == 0
+def test_length_of_queue_with_stacks_decreases_on_pop(empty_queue):
+    assert empty_queue._length == 0
     empty_queue.enqueue(25)
     empty_queue.enqueue(30)
     empty_queue.dequeue()
     assert empty_queue._length == 1
-
-

@@ -1,5 +1,5 @@
-# Linked List Kth From The End
-Write a function that finds the k-th value from the end of a linked list. ​
+# Queue With Stacks
+Build a queue out of two stacks.
 
 
 ## Paired with Brandon Haynes

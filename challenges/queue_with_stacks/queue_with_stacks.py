@@ -1,5 +1,4 @@
 from typing import Any
-import pytest
 
 
 class Node:
@@ -17,7 +16,7 @@ class Node:
     def __repr__(self):
         """ Returns a more highly formatted string
         """
-        return f' <Node | Val: {self.val | Next: self._next}>'
+        return f' <Node | Val: {self.val} | Next: {self._next}>'
 
 
 class Stack(object):
@@ -28,12 +27,12 @@ class Stack(object):
         """
         self.top: Node = None
         self._length: int = 0
-        if potential_iterable is not None:
+        if potential_iterable is iter:
             try:
                 for i in potential_iterable:
                     self.pop(i)
             except TypeError:
-                self.pop(potential_iterable)
+                self.pop()
 
     def __str__(self):
             """ Returns a string of the top and the length
@@ -51,14 +50,18 @@ class Stack(object):
         return self._length
 
     def push(self, val):
-        """ Creates a new node for any item in an iterable and adds the value to the top of the stack
+        """ Creates a new node for any item in an iterable and adds the value
+        to the top of the stack
         """
         self.top = Node(val, self.top)
         self._length += 1
         return self.top
 
     def pop(self):
-        """ takes no arguments and removes and returns the Node at the top of the stack. First, set tempoaray to top, set the new top to the temporary's next, set the temporary to have no next now to avoid breaking stack, return the value
+        """ takes no arguments and removes and returns the Node at the top of
+        the stack. First, set tempoaray to top, set the new top to the
+        temporary's next, set the temporary to have no next now to avoid
+        breaking stack, return the value
         """
         temporary = self.top
         self.top = temporary._next
@@ -67,32 +70,44 @@ class Stack(object):
         return temporary.val
 
     def peek(self):
-        """ Takes no arguments and returns the whole node at the top of the stack without mutating stack
+        """ Takes no arguments and returns the whole node at the top of the
+        stack without mutating stack
         """
         return self.top
 
 
 class Queue(object):
     def __init__(self):
-        self.top = None
+        self.front = None
         self.back = None
+        self._length: int = 0
+        self.stack_one = Stack()
+        self.stack_two = Stack()
+
+    def __len__(self):
+        """ Returns the length of the queue
+        """
+        return self._length
 
     def enqueue(self, val):
-        stack_one = Stack(val)
-        stack_two = Stack(val)
-        for i in stack_two:
-            stack_one.push(stack_two.pop())
-        return stack_one.push(val)
+        """ Adds a new node
+        """
+        self.front = self.stack_two.push(val)
+        self._length += 1
+        return self
 
     def dequeue(self):
-        stack_one = Stack(self.val)
-        stack_two = Stack(self.val)
-        for i in stack_one:
-            stack_two.push(stack_one.pop())
-        return stack_two.pop()
+        """ Removes a node
+        """
+        self._length -= 1
+        while self.stack_two._length > 1:
+            self.stack_one.push(self.stack_two.pop())
 
+        return self.stack_two.pop()
 
+        while self.stack_one._length:
+            self.stack_two.push(self.stack_one.pop())
 
+        self.front = self.stack_two
 
-
-
+        return self.stack_two.pop()
