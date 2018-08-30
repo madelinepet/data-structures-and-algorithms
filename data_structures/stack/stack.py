@@ -34,14 +34,18 @@ class Stack(object):
         return self._length
 
     def push(self, val):
-        """ Creates a new node for any item in an iterable and adds the value to the top of the stack
+        """ Creates a new node for any item in an iterable and adds the value
+        to the top of the stack
         """
         self.top = Node(val, self.top)
         self._length += 1
         return self.top
 
     def pop(self):
-        """ takes no arguments and removes and returns the Node at the top of the stack. First, set tempoaray to top, set the new top to the temporary's next, set the temporary to have no next now to avoid breaking stack, return the value
+        """ takes no arguments and removes and returns the Node at the top of
+        the stack. First, set tempoaray to top, set the new top to the
+        temporary's next, set the temporary to have no next now to avoid
+        breaking stack, return the value
         """
         temporary = self.top
         self.top = temporary._next
@@ -50,9 +54,7 @@ class Stack(object):
         return temporary.val
 
     def peek(self):
-        """ Takes no arguments and returns the whole node at the top of the stack without mutating stack
+        """ Takes no arguments and returns the whole node at the top of the
+        stack without mutating stack
         """
         return self.top
-
-
-
