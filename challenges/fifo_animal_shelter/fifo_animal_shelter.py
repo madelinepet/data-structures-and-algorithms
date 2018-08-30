@@ -1,5 +1,4 @@
 from typing import Any
-import pytest
 
 
 class Node:
@@ -17,7 +16,7 @@ class Node:
     def __repr__(self):
         """ Returns a more highly formatted string
         """
-        return f' <Node | Val: {self.val | Next: self._next}>'
+        return f' <Node | Val: {self.val} | Next: {self._next}>'
 
 
 class Stack(object):
@@ -51,14 +50,16 @@ class Stack(object):
         return self._length
 
     def push(self, val):
-        """ Creates a new node for any item in an iterable and adds the value to the top of the stack
+        """ Creates a new node for any item in an iterable and adds the value
+        to the top of the stack
         """
         self.top = Node(val, self.top)
         self._length += 1
         return self.top
 
     def pop(self):
-        """ takes no arguments and removes and returns the Node at the top of the stack. First, set tempoaray to top, set the new top to the temporary's next, set the temporary to have no next now to avoid breaking stack, return the value
+        """ takes no arguments and removes and returns the Node at the top of
+        the stack. First, set tempoaray to top, set the new top to the temporary's next, set the temporary to have no next now to avoid breaking stack, return the value
         """
         temporary = self.top
         self.top = temporary._next
@@ -67,13 +68,30 @@ class Stack(object):
         return temporary.val
 
     def peek(self):
-        """ Takes no arguments and returns the whole node at the top of the stack without mutating stack
+        """ Takes no arguments and returns the whole node at the top of the
+        stack without mutating stack
         """
         return self.top
 
 
+class Animal():
+    def __init__(self, name):
+        self.name = name
+
+
+class Dog():
+    def __init__(self, name):
+        super().__init__(self, name)
+
+
+class Cat():
+    def __init__(self, name):
+        super().__init__(self, name)
+
+
 class AnimalShelter(object):
-    """ This creates a queue class with methods below, used for animals in an animal shelter
+    """ This creates a queue class with methods below, used for animals in an
+    animal shelter
     """
     def __init__(self, potential_iterable=None):
         """ Initializes fn, defines datatype as always a node, = "type annotation"
@@ -121,10 +139,3 @@ class AnimalShelter(object):
                 self._length -= 1
             return self.queue.pop()
         return('No items in queue!')
-
-
-
-
-
-
-
