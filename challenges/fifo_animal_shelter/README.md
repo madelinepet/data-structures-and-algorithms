@@ -3,6 +3,6 @@ Create an animal shelter class that holds dogs and cats in a queue. FIFO for occ
 
 ## Paired with Brandon Haynes
 
-![Whiteboard image ](/assets/2018_08_28 1_53 PM Office Lens.jpg)
+![Whiteboard image ](/assets/fifo_animal_shelter.jpg)
 
-![pseudo code](https://github.com/madelinepet/data-structures-and-algorithms/tree/master/2018_08_28 1_53 PM Office Lens.jpg)
+![pseudo code](https://github.com/madelinepet/data-structures-and-algorithms/tree/master/fifo_animal_shelter.jpg)
