@@ -1,4 +1,4 @@
-from .fifo_animal_shelter import AnimalShelter, Node
+from .fifo_animal_shelter import AnimalShelter
 
 import pytest
 
@@ -52,6 +52,3 @@ def test_cant_add_non_dog_cat(empty_queue):
     expected = None
     actual = AnimalShelter.enqueue(empty_queue, 'birb')
     assert expected == actual
-
-
-
