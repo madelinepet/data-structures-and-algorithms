@@ -41,21 +41,15 @@ def test_length_of_queue_increases_on_insertion(empty_queue):
 
 
 def test_length_of_queue_decreases_on_pop(empty_queue):
-    assert len(empty_queue) == 0
+    assert empty_queue._length == 0
     empty_queue.enqueue('cat')
     empty_queue.enqueue('dog')
     empty_queue.dequeue()
     assert empty_queue._length == 1
 
 
-def test_dequeue_returns_pref(empty_queue):
-    expected = Node('dog')
-    actual = AnimalShelter.dequeue(empty_queue, 'dog')
-    assert expected == actual
-
-
 def test_cant_add_non_dog_cat(empty_queue):
-    expected = NameError
+    expected = None
     actual = AnimalShelter.enqueue(empty_queue, 'birb')
     assert expected == actual
 
