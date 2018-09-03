@@ -2,6 +2,7 @@
 Test that in a string, every open paren has a closing paren and that there are no mismatched parens. Return true if they all match, false if they do not.
 
 ## Paired with Brandon Haynes
+Had help refactoring from Ben Hurst.
 
 ![Whiteboard image ](/assets/multi_bracket_validation.jpg)
 
