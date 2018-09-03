@@ -74,34 +74,26 @@ class Stack(object):
 
 
 def multi_bracket_validation(user_input):
-    """ Function that checks if every opening bracket has a matching closing
-    bracket
+    """ Function that checks if every opening bracket has a matching closing bracket. If input not iterable, returns false
     """
+    opening_brackets = ['[', '(', '{']
+    closing_brackets = [']', ')', '}']
     stack_one = Stack()
     try:
-        for c in user_input:
-            if c == '(' or c == '[' or c == '{':
-                stack_one.push(c)
-            if c == ')':
-                if stack_one._length < 1:
+        for i in range(len(user_input)):
+            if user_input[i] in opening_brackets:
+                stack_one.push(user_input[i])
+            if user_input[i] in closing_brackets:
+                if len(stack_one) == 0:
                     return False
-                if stack_one.peek != '(':
+                elif opening_brackets[closing_brackets.index(user_input[i])] != stack_one.top.val:
                     return False
-                stack_one.pop()
-            if c == ']':
-                if stack_one._length < 1:
-                    return False
-                if stack_one.peek != '[':
-                    return False
-                stack_one.pop()
-            if c == '}':
-                if stack_one._length < 1:
-                    return False
-                if stack_one.peek != '{':
-                    return False
-                stack_one.pop()
-        if stack_one._length > 0:
+                else:
+                    stack_one.pop()
+        if len(stack_one) > 0:
             return False
         return True
+
     except TypeError:
         return False
+
