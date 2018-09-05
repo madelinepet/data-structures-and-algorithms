@@ -38,15 +38,3 @@ def test_default_property_back(empty_queue):
 def test_default_property_length(empty_queue):
     assert empty_queue._length == 0
 
-
-def test_length_of_queue_increases_on_insertion(empty_queue):
-    empty_queue.enqueue(25)
-    assert empty_queue._length == 1
-
-
-def test_length_of_queue_decreases_on_pop(empty_queue):
-    assert len(empty_queue) == 0
-    empty_queue.enqueue(25)
-    empty_queue.enqueue(30)
-    empty_queue.dequeue()
-    assert empty_queue._length == 1

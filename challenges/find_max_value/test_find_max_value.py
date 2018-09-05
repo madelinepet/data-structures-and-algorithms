@@ -1,5 +1,5 @@
 import pytest
-from .binary_search_tree import BinaryTree
+from .find_max_value import BinaryTree
 
 
 @pytest.fixture
@@ -151,8 +151,21 @@ def test_inorder_traversal():
     assert expected == actual
 
 
-# def test_insert_value_already_in_tree():
-#     bt = BinaryTree([25])
-#     bt.insert(25)
-#     with pytest.raises(ValueError):
-#         bt.insert(25)
+def test_max_val():
+    pass
+
+
+def test_null_val_max():
+    pass
+
+
+def test_unbalanced_tree_max():
+    pass
+
+
+def test_greatest_no_children_max():
+    pass
+
+
+def test_greatest_has_children_max():
+    pass
