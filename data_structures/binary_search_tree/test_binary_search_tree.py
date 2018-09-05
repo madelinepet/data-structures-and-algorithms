@@ -156,6 +156,3 @@ def test_insert_value_already_in_tree():
     bt.insert(25)
     with pytest.raises(ValueError):
         bt.insert(25)
-
-
-

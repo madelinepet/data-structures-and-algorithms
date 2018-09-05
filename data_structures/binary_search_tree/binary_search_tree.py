@@ -9,14 +9,14 @@ class Node(object):
         self.right = right
 
     def __str__(self):
-        """ String representation of the Node
+        """ Returns a string
         """
-        pass
+        return f'{self.val}'
 
     def __repr__(self):
-        """ Technical representation of the Node
+        """ Returns a more highly formatted string
         """
-        pass
+        return f' <Node | Val: {self.val} | Root: {self.root} | Left: {self.left} | Right: {self.right}>'
 
 
 class BinaryTree:
@@ -31,12 +31,12 @@ class BinaryTree:
     def __str__(self):
         """ String representation of the BinaryTree
         """
-        pass
+        return f'{self.val}'
 
     def __repr__(self):
         """ Technical representation of the BinaryTree
         """
-        pass
+        return f' <Node | Val: {self.val} | Root : {self.root}>'
 
     def insert(self, val):
         """ Given root node, go left or right, get to child, go left, right or

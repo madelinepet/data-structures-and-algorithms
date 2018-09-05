@@ -16,4 +16,4 @@ class Node:
     def __repr__(self):
         """ Returns a more highly formatted string
         """
-        return f' <Node | Val: {self.val | Next: self._next}>'
+        return f' <Node | Val: {self.val} | Next: {self._next}>'

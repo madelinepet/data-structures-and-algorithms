@@ -9,14 +9,14 @@ class Node(object):
         self.right = right
 
     def __str__(self):
-        """ String representation of the Node
+        """ Returns a string
         """
-        pass
+        return f'{self.value}'
 
     def __repr__(self):
-        """ Technical representation of the Node
+        """ Returns a more highly formatted string
         """
-        pass
+        return f' <Node | Value: {self.value} | Data: {self.data} | Left: {self.left} | Right: {self.right} >'
 
 
 class BinaryTree:
@@ -31,12 +31,12 @@ class BinaryTree:
     def __str__(self):
         """ String representation of the BinaryTree
         """
-        pass
+        return f'{self.value}'
 
     def __repr__(self):
         """ Technical representation of the BinaryTree
         """
-        pass
+        return f' <Node | Value: {self.value} | Root : {self.root}>'
 
     def insert(self, val):
         """ Given root node, go left or right, get to child, go left, right or
@@ -136,6 +136,7 @@ class BinaryTree:
             # call walk for the first time and pass in the root
             _walk(self.root)
 
+
 class Queue(object):
     """ This creates a queue class with methods below
     """
@@ -200,5 +201,3 @@ def traverse_breadth_first(Node, root):
             breadth.enqueue(front.left)
         if (front.right is not None):
             breadth.enqueue(front.right)
-
-
