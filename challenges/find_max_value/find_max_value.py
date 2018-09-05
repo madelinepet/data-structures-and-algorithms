@@ -1,4 +1,3 @@
-
 class Node(object):
     def __init__(self, value, data=None, left=None, right=None):
         """ Instantiates the first Node
@@ -187,17 +186,27 @@ class Queue(object):
         return('No items in queue!')
 
 
-def traverse_breadth_first(Node, root):
-    """ Return all the nodes on each level of a binary tree
+def find_max_value(Node, root):
+    """ Function that takes in a tree and returns the max value
     """
-
     breadth = Queue()
     breadth.enqueue(root)
 
     while breadth.front is not None:
         front = breadth.dequeue()
-        print(front.value)
+        temp = breadth.front
         if (front.left is not None):
             breadth.enqueue(front.left)
+            current = temp.left
+            if current.val > temp.left.val:
+                temp.val = current.val
+            else:
+                pass
         if (front.right is not None):
             breadth.enqueue(front.right)
+            current = temp.right
+            if current.val > temp.val:
+                temp.val = current.val
+            else:
+                pass
+    return temp.val
