@@ -1,5 +1,5 @@
 import pytest
-from .binary_search_tree import BinaryTree
+from .breadth_first_traversal import BinaryTree
 
 
 @pytest.fixture
@@ -149,10 +149,3 @@ def test_inorder_traversal():
         actual.append(node.value)
     bt.in_order(generate_list)
     assert expected == actual
-
-
-def test_insert_value_already_in_tree():
-    bt = BinaryTree([25])
-    bt.insert(25)
-    with pytest.raises(ValueError):
-        bt.insert(25)

@@ -11,12 +11,12 @@ class Node(object):
     def __str__(self):
         """ Returns a string
         """
-        return f'{self.val}'
+        return f'{self.value}'
 
     def __repr__(self):
         """ Returns a more highly formatted string
         """
-        return f' <Node | Val: {self.val} | Root: {self.root} | Left: {self.left} | Right: {self.right}>'
+        return f' <Node | Value: {self.value} | Data: {self.data} | Left: {self.left} | Right: {self.right} >'
 
 
 class BinaryTree:
@@ -31,12 +31,12 @@ class BinaryTree:
     def __str__(self):
         """ String representation of the BinaryTree
         """
-        return f'{self.val}'
+        return f'{self.value}'
 
     def __repr__(self):
         """ Technical representation of the BinaryTree
         """
-        return f' <Node | Val: {self.val} | Root : {self.root}>'
+        return f' <Node | Value: {self.value} | Root : {self.root}>'
 
     def insert(self, val):
         """ Given root node, go left or right, get to child, go left, right or
@@ -135,3 +135,69 @@ class BinaryTree:
 
             # call walk for the first time and pass in the root
             _walk(self.root)
+
+
+class Queue(object):
+    """ This creates a queue class with methods below
+    """
+    def __init__(self, potential_iterable=None):
+        """ Initializes fn, defines datatype as always a node, = "type annotation"
+        """
+        self.queue = list()
+        self.front = None
+        self.back = None
+        self._length: int = 0
+
+    def __str__(self):
+            """ Returns a string of the top and the length
+            """
+            return f'{self.front} | {self.back}| Length: {self._length}'
+
+    def __repr__(self):
+        """ Returns a formatted string of the top and the length of the queue
+        """
+        return f'<Queue | front: {self.front} | back: {self.back}| Length : {self._length}>'
+
+    def __len__(self):
+        """ Returns the length of the queue
+        """
+        return self._length
+
+    def enqueue(self, potential_iterable):
+        """Takes in an iterable and creates new nodes in the queue's end
+        """
+        if potential_iterable is iter:
+            try:
+                for i in potential_iterable:
+                    if i not in self.queue:
+                        self.queue.insert(0, i)
+                        self._length += 1
+                        return True
+                    else:
+                        return False
+            except TypeError:
+                self.insert(0, potential_iterable)
+        else:
+                self.queue.insert(0, potential_iterable)
+
+    def dequeue(self):
+        if len(self.queue) > 0:
+            return self.queue.pop()
+            self._length -= 1
+        return('No items in queue!')
+
+
+def traverse_breadth_first(Node, root):
+    """ Return all the nodes on each level of a binary tree
+    """
+
+    breadth = Queue()
+    breadth.enqueue(root)
+
+    while breadth.head is not None:
+        front = breadth.dequeue()
+        print(front.Value)
+        if (front.left is not None):
+            breadth.enqueue(front.left)
+        if (front.right is not None):
+            breadth.enqueue(front.right)
