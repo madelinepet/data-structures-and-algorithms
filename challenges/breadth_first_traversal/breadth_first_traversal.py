@@ -187,17 +187,20 @@ class Queue(object):
         return('No items in queue!')
 
 
-def traverse_breadth_first(Node, root):
+def traverse_breadth_first(bt):
     """ Return all the nodes on each level of a binary tree
     """
 
     breadth = Queue()
-    breadth.enqueue(root)
+    output = []
+    breadth.enqueue(bt.front)
 
-    while breadth.front is not None:
-        front = breadth.dequeue()
-        print(front.value)
-        if (front.left is not None):
-            breadth.enqueue(front.left)
-        if (front.right is not None):
-            breadth.enqueue(front.right)
+    if not breadth.front:
+        return('Your bt was empty!')
+    while breadth._length is not None:
+        if (breadth.front.left is not None):
+            breadth.enqueue(breadth.front.left.val)
+        if (breadth.front.right is not None):
+            breadth.enqueue(breadth.front.right.val)
+        output.append(breadth.dequeue())
+    return output
