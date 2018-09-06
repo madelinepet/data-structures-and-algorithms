@@ -151,8 +151,8 @@ def test_inorder_traversal():
     assert expected == actual
 
 
-# def test_insert_value_already_in_tree():
-#     bt = BinaryTree([25])
-#     bt.insert(25)
-#     with pytest.raises(ValueError):
-#         bt.insert(25)
+def test_insert_value_already_in_tree():
+    with pytest.raises(ValueError):
+        bt = BinaryTree([25])
+        bt.insert(25)
+        bt.insert(25)
