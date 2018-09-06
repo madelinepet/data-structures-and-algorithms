@@ -47,11 +47,15 @@ class Stack(object):
         temporary's next, set the temporary to have no next now to avoid
         breaking stack, return the value
         """
-        temporary = self.top
-        self.top = temporary._next
-        temporary._next = None
-        self._length -= 1
-        return temporary.val
+        if self._length:
+
+            temporary = self.top
+            self.top = temporary._next
+            temporary._next = None
+            self._length -= 1
+            return temporary.val
+        else:
+            return('Stack is empty!')
 
     def peek(self):
         """ Takes no arguments and returns the whole node at the top of the

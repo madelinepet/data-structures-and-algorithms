@@ -42,14 +42,18 @@ def test_insert_successful(empty_stack):
 
 
 def test_length_of_stack_increases_on_insertion(empty_stack):
-    assert len(empty_stack) == 0
+    assert empty_stack._length == 0
     empty_stack.push(25)
-    assert len(empty_stack) == 1
+    assert empty_stack._length == 1
 
 
 def test_length_of_stack_decreases_on_pop(empty_stack):
-    assert len(empty_stack) == 0
+    assert empty_stack._length == 0
     empty_stack.push(25)
     empty_stack.push(30)
     empty_stack.pop()
-    assert len(empty_stack) == 1
+    assert empty_stack._length == 1
+
+
+def test_empty_stack_pop(empty_stack):
+    assert empty_stack.pop() == ('Stack is empty!')
