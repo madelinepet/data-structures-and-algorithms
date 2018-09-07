@@ -169,19 +169,28 @@ class Queue(object):
             for i in potential_iterable:
                 if i not in self.queue:
                     self.queue.insert(0, i)
+                    potential_iterable[0] = self.front
+                    potential_iterable[-1] = self.back
                     self._length += 1
                     return True
                 else:
                     return False
         except TypeError:
-            self._length += 1
-            self.back = potential_iterable
-            self.queue.insert(0, potential_iterable)
+            if not len(self.queue):
+                self._length += 1
+                self.front = potential_iterable
+                self.back = potential_iterable
+                self.queue.insert(0, potential_iterable)
+            else:
+                self._length += 1
+                self.back = potential_iterable
+                self.queue.insert(0, potential_iterable)
 
     def dequeue(self):
         if len(self.queue) > 0:
-            return self.queue.pop()
             self._length -= 1
+            self.front = self.queue[-1]
+            return self.queue.pop()
         return('No items in queue!')
 
 
@@ -194,13 +203,15 @@ def find_max_value(bt):
     maximum = bt.root.value
     if not bt.root:
         return('Your bt was empty!')
-    # import pdb; pdb.set_trace()
     while breadth._length > 0:
-        if (breadth.front.left is not None):
+        if breadth.front and breadth.front.left:
             breadth.enqueue(breadth.front.left)
-        if (breadth.front.right is not None):
+        if breadth.front and breadth.front.right:
             breadth.enqueue(breadth.front.right)
-        output.append(breadth.dequeue().value)
+        try:
+            output.append(breadth.dequeue().value)
+        except Exception:
+            pass
     for i in output:
         if i > maximum:
             print('hi')
