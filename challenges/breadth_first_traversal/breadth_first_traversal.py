@@ -194,16 +194,15 @@ class Queue(object):
 def traverse_breadth_first(bt):
     """ Return all the nodes on each level of a binary tree
     """
-    breadth = Queue()
-    breadth.enqueue(bt.root)
-    curr = breadth.front
-    if not bt.root:
+    queue = Queue()
+    output = []
+    queue.enqueue(bt.root)
+    if queue.front is None:
         return('Your bt was empty!')
-    while curr is not None:
-        if curr.left:
-            breadth.enqueue(curr.left)
-        if curr.right:
-            breadth.enqueue(curr.right)
-        temp = breadth.dequeue()
-        curr = breadth.front
-        return temp.value
+    while len(queue) > 0:
+        if queue.front.value.left is not None:
+            queue.enqueue(queue.front.value.left)
+        if queue.front.value.right is not None:
+            queue.enqueue(queue.front.value.right)
+        output.append(queue.dequeue().value)
+    return output
