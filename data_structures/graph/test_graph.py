@@ -66,21 +66,29 @@ def test_graph_adds_vert(graph_filled):
     }
 
 
-def test_has_vert():
-    pass
+def test_has_vert(graph_filled):
+    assert graph_filled.has_vert('D')
 
 
-def test_gets_neighbors():
-    pass
+def test_doesnt_have_vert(graph_filled):
+    assert not graph_filled.has_vert('Z')
 
 
-def test_no_input():
-    pass
+def test_empty_doesnt_have_vert(graph_empty):
+    assert not graph_empty.has_vert('Z')
 
 
-def test_no_neightbors():
-    pass
+def test_gets_no_neighbors_none(graph_filled):
+    assert graph_filled.get_neighbors('Z') == []
 
 
-def test_returns_length():
-    pass
+def test_gets_no_neighbors_actual(graph_filled):
+    assert graph_filled.get_neighbors('A') == {'B': 10}.keys()
+
+
+def test_returns_length(graph_filled):
+    assert len(graph_filled) == 6
+
+
+def test_returns_length_empty(graph_empty):
+    assert len(graph_empty) == 0
