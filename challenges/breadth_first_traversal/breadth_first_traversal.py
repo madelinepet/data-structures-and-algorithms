@@ -7,6 +7,7 @@ class Node(object):
         self.data = data
         self.left = left
         self.right = right
+        self._next = None
 
     def __str__(self):
         """ Returns a string
@@ -16,7 +17,7 @@ class Node(object):
     def __repr__(self):
         """ Returns a more highly formatted string
         """
-        return f' <Node | Value: {self.value} | Data: {self.data} | Left: {self.left} | Right: {self.right} >'
+        return f' <Node | Value: {self.value} | Data: {self.data} | Left: {self.left} | Right: {self.right} | Next: {self._next}>'
 
 
 class BinaryTree:
@@ -36,7 +37,7 @@ class BinaryTree:
     def __repr__(self):
         """ Technical representation of the BinaryTree
         """
-        return f' <Node | Value: {self.value} | Root : {self.root}>'
+        return f' <Node | Value: {self.root.value} | Root : {self.root}>'
 
     def insert(self, val):
         """ Given root node, go left or right, get to child, go left, right or
@@ -51,18 +52,18 @@ class BinaryTree:
         while True:
             if val == current.value:
                 raise ValueError('Value is already in the tree')
-            if val > current.value:
-                if current.right is None:
-                    current.right = new_node
-                    return False
-                else:
-                    current = current.right
             if val < current.value:
                 if current.left is None:
                     current.left = new_node
                     return False
                 else:
                     current = current.left
+            if val > current.value:
+                if current.right is None:
+                    current.right = new_node
+                    return False
+                else:
+                    current = current.right
 
     def in_order(self, callable=lambda node: print(node)):
         """ Go left, visit, go right.
@@ -143,64 +144,66 @@ class Queue(object):
     def __init__(self, potential_iterable=None):
         """ Initializes fn, defines datatype as always a node, = "type annotation"
         """
-        self.queue = list()
         self.front = None
         self.back = None
-        self._length: int = 0
+        self._length = 0
+
+        if isinstance(potential_iterable, (list, tuple)):
+            for x in potential_iterable:
+                self.enqueue(x)
 
     def __str__(self):
             """ Returns a string of the top and the length
             """
-            return f'{self.front} | {self.back}| Length: {self._length}'
+            return f'{self.front} | {self.back}| {self._length}'
 
     def __repr__(self):
         """ Returns a formatted string of the top and the length of the queue
         """
-        return f'<Queue | front: {self.front} | back: {self.back}| Length : {self._length}>'
+        return f'<Queue | Front: {self.front} | Back: {self.back}| Length : {self._length}>'
 
     def __len__(self):
         """ Returns the length of the queue
         """
         return self._length
 
-    def enqueue(self, potential_iterable):
+    def enqueue(self, input):
         """Takes in an iterable and creates new nodes in the queue's end
         """
-        if potential_iterable is iter:
-            try:
-                for i in potential_iterable:
-                    if i not in self.queue:
-                        self.queue.insert(0, i)
-                        self._length += 1
-                        return True
-                    else:
-                        return False
-            except TypeError:
-                self.insert(0, potential_iterable)
+        new_node = Node(input)
+        if not self.front:
+            self._length += 1
+            self.front = new_node
+            self.back = new_node
         else:
-                self.queue.insert(0, potential_iterable)
+            self._length += 1
+            temp = self.back
+            self.back = new_node
+            temp._next = self.back
 
     def dequeue(self):
-        if len(self.queue) > 0:
-            return self.queue.pop()
+        if self.front:
             self._length -= 1
+            temp = self.front
+            self.front = temp._next
+            temp._next = None
+            return temp.value
         return('No items in queue!')
 
 
 def traverse_breadth_first(bt):
     """ Return all the nodes on each level of a binary tree
     """
-
     breadth = Queue()
-    output = []
-    breadth.enqueue(bt.front)
-
-    if not breadth.front:
+    breadth.enqueue(bt.root)
+    curr = breadth.front
+    if not bt.root:
         return('Your bt was empty!')
-    while breadth._length is not None:
-        if (breadth.front.left is not None):
-            breadth.enqueue(breadth.front.left.val)
-        if (breadth.front.right is not None):
-            breadth.enqueue(breadth.front.right.val)
-        output.append(breadth.dequeue())
-    return output
+    while curr is not None:
+        if curr.left:
+            breadth.enqueue(curr.left)
+        if curr.right:
+            breadth.enqueue(curr.right)
+        temp = breadth.dequeue()
+        curr = breadth.front
+        return temp.value

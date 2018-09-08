@@ -35,7 +35,7 @@ class BinaryTree:
     def __repr__(self):
         """ Technical representation of the BinaryTree
         """
-        return f' <Node | Value: {self.value} | Root : {self.root}>'
+        return f' <Node | Value: {self.root.value} | Root : {self.root}>'
 
     def insert(self, val):
         """ Given root node, go left or right, get to child, go left, right or
@@ -150,12 +150,12 @@ class Queue(object):
     def __str__(self):
             """ Returns a string of the top and the length
             """
-            return f'{self.front} | {self.back}| Length: {self._length}'
+            return f'{self.front} | {self.back}| {self._length}'
 
     def __repr__(self):
         """ Returns a formatted string of the top and the length of the queue
         """
-        return f'<Queue | front: {self.front} | back: {self.back}| Length : {self._length}>'
+        return f'<Queue | Front: {self.front} | Back: {self.back}| Length : {self._length}>'
 
     def __len__(self):
         """ Returns the length of the queue
@@ -165,48 +165,55 @@ class Queue(object):
     def enqueue(self, potential_iterable):
         """Takes in an iterable and creates new nodes in the queue's end
         """
-        if potential_iterable is iter:
-            try:
-                for i in potential_iterable:
-                    if i not in self.queue:
-                        self.queue.insert(0, i)
-                        self._length += 1
-                        return True
-                    else:
-                        return False
-            except TypeError:
-                self.insert(0, potential_iterable)
-        else:
+        try:
+            for i in potential_iterable:
+                if i not in self.queue:
+                    self.queue.insert(0, i)
+                    potential_iterable[0] = self.front
+                    potential_iterable[-1] = self.back
+                    self._length += 1
+                    return True
+                else:
+                    return False
+        except TypeError:
+            if not len(self.queue):
+                self._length += 1
+                self.front = potential_iterable
+                self.back = potential_iterable
+                self.queue.insert(0, potential_iterable)
+            else:
+                self._length += 1
+                self.back = potential_iterable
                 self.queue.insert(0, potential_iterable)
 
     def dequeue(self):
         if len(self.queue) > 0:
-            return self.queue.pop()
             self._length -= 1
+            self.front = self.queue[-1]
+            return self.queue.pop()
         return('No items in queue!')
 
 
-def find_max_value(Node, root):
+def find_max_value(bt):
     """ Function that takes in a tree and returns the max value
     """
     breadth = Queue()
-    breadth.enqueue(root)
-
-    while breadth.front is not None:
-        front = breadth.dequeue()
-        temp = breadth.front
-        if (front.left is not None):
-            breadth.enqueue(front.left)
-            current = temp.left
-            if current.val > temp.left.val:
-                temp.val = current.val
-            else:
-                pass
-        if (front.right is not None):
-            breadth.enqueue(front.right)
-            current = temp.right
-            if current.val > temp.val:
-                temp.val = current.val
-            else:
-                pass
-    return temp.val
+    output = []
+    breadth.enqueue(bt.root)
+    maximum = bt.root.value
+    if not bt.root:
+        return('Your bt was empty!')
+    while breadth._length > 0:
+        if breadth.front and breadth.front.left:
+            breadth.enqueue(breadth.front.left)
+        if breadth.front and breadth.front.right:
+            breadth.enqueue(breadth.front.right)
+        try:
+            output.append(breadth.dequeue().value)
+        except Exception:
+            pass
+    for i in output:
+        if i > maximum:
+            print('hi')
+            maximum = i
+    return maximum
