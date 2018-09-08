@@ -207,4 +207,3 @@ def traverse_breadth_first(bt):
         temp = breadth.dequeue()
         curr = breadth.front
         return temp.value
-

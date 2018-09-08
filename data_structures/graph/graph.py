@@ -1,47 +1,46 @@
-class Vertice:
-    def __init__(self, value):
-        self.value = value
-        # self.vertices is essentially neighbors
-        self.vertices = {}
-
-    def __repr__(self):
-        pass
-
-    def __str__(self):
-        pass
-
-
-class Graph():
+class Graph:
     def __init__(self):
         self.graph = {}
 
     def __repr__(self):
-        pass
+        return(f'Graph: {self.graph}')
 
     def __str__(self):
-        pass
+        return f'{self.graph}'
 
     def __len__(self):
-        pass
+        return len(self.graph)
 
     def add_vert(self, val):
-        """ Use val to create a new vertice, add that vertice to the graph,
-        check if to see if the vert already exists, if so, raise an exception in a helper method
+        """ add vertice to self.graph, check to see if the vert already exists: if so raise exception create a helper method
         """
+        if self.has_vert(val):
+            raise LookupError
+        self.graph[val] = {}
 
-    def has_vert_already(self, val):
-        """ Helper method that checks for a key in the graph
+    def has_vert(self, val):
+        """ checks for a key in the graph
         """
-        pass
+        if val in self.graph:
+            return True
+        else:
+            return False
 
-    def add_edge(self, vert1, vert2, weight):
-        """ Adds a new edge connecting vert1 and vert 2 with weight, check if
-        the edge already exists
+    def add_edge(self, v1, v2, weight):
+        """ add a relationship and weight between two verts, don't forget to validate
         """
-        pass
+        if self.has_vert(v1) and self.has_vert(v2):
+            try:
+                if self.graph[v1][v2]:
+                    raise LookupError
+            except KeyError:
+                self.graph[v1][v2] = weight
 
     def get_neighbors(self, val):
-        """ Given a key, return all the adjacent verts
+        """ Given a val (key), return all all adjacent verts, return empty
+        list if no neighbors
         """
-        pass
-
+        if self.has_vert(val):
+            return self.graph[val].keys()
+        else:
+            return([])

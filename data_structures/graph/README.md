@@ -7,4 +7,6 @@ Clone the repository, setup your virtual environment using "pipenv shell", "pipe
 ## Solo-assignment
 Madeline Peters
 
+## Alex Stone was my rubber ducky
+
 
