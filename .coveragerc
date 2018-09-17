@@ -1,0 +1,12 @@
+[run]
+omit =
+    /Users/madelinepet/.local/share/virtualenvs*
+    data_structures/graph/conftest.py
+    challenges/breadth_first_graph/conftest.py
+    challenges/array_binary_search/test_array_binary_search.py
+    challenges/breadth_first_graph/test_breadth_first_graph.py
+    challenges/fifo_animal_shelter/test_fifo_animal_shelter.py
+    challenges/ll_merge/test_ll_merge.py
+    challenges/queue_with_stacks/test_queue_with_stacks.py
+    data_structures/graph/test_graph.py
+    data_structures/queue/test_queue.py
