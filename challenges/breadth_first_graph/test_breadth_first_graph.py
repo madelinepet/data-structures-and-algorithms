@@ -1,5 +1,5 @@
 import pytest
-from .graph import Graph
+from .breadth_first_graph import Graph
 
 
 @pytest.fixture()
@@ -92,3 +92,32 @@ def test_returns_length(graph_filled):
 
 def test_returns_length_empty(graph_empty):
     assert len(graph_empty) == 0
+
+
+def test_traversal_returns_correct_values(graph_filled):
+    assert graph_filled.breadth_first_traversal('A') == ['A', 'B', 'C', 'D', 'E', 'F']
+
+
+def test_traversal_of_empty_graph(graph_empty):
+    assert graph_empty.breadth_first_traversal('A') == []
+
+
+def test_returns_one_if_graph_one_node():
+    g = Graph()
+    g.graph = {
+        'A': {},
+    }
+    assert g.breadth_first_traversal('A') == ['A']
+
+
+def test_returns_two_if_graph_two_nodes():
+    g = Graph()
+    g.graph = {
+        'A': {},
+        'B': {}
+    }
+    assert g.breadth_first_traversal('A') == ['A', 'B']
+
+
+def test_breaks_if_no_node_passed_in(graph_empty):
+    assert graph_empty.breadth_first_traversal('A') == []
