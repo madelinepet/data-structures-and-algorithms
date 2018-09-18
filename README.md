@@ -12,6 +12,7 @@ Start up your python environment, install dependencies including pytest, run the
     - Queue
     - Stack
     - Binary Tree (Not self balancing)
+    - Graph
 
 3. Challenges
     - Array_shift (August 2018)
@@ -22,6 +23,10 @@ Start up your python environment, install dependencies including pytest, run the
     - Linked List Kth from the End(August 2018)
     - Queue with Stacks(August 2018)
     - Multi Bracket Validation(August 2018)
-    - Breadth First Traversal(September 2018)
+    - Breadth First Traversal of a Binary Tree(September 2018)
+    - Find Maximum Value in a Binary Tree(September 2018)
+    - Breadth First Traversal of a Graph(September 17,2018)
+    - Get Edges of a Graph(September 18, 2018)
+
 
 
