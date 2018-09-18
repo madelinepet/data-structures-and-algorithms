@@ -214,6 +214,5 @@ def find_max_value(bt):
             pass
     for i in output:
         if i > maximum:
-            print('hi')
             maximum = i
     return maximum

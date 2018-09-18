@@ -2,41 +2,6 @@ import pytest
 from .breadth_first_graph import Graph
 
 
-@pytest.fixture()
-def graph_empty():
-    g = Graph()
-    return g
-
-
-@pytest.fixture()
-def graph_filled():
-    g = Graph()
-    g.graph = {
-        'A': {'B': 10},
-        'B': {'A': 5, 'D': 15, 'C': 20},
-        'C': {},
-        'D': {'A': 5},
-        'E': {},
-        'F': {}
-    }
-    return g
-
-
-@pytest.fixture()
-def graph_filled_for_traversal():
-    g = Graph()
-    g.graph = {
-        'A': {'B': 10, 'C': 15},
-        'B': {'D': 15, 'E': 5, 'C': 2},
-        'C': {'F': 50, 'G': 25},
-        'D': {},
-        'E': {'C': 5},
-        'F': {'E': 10},
-        'G': {'F': 20}
-    }
-    return g
-
-
 def test_graph_exists():
     assert Graph
 
@@ -95,7 +60,7 @@ def test_returns_length_empty(graph_empty):
 
 
 def test_traversal_returns_correct_values(graph_filled):
-    assert graph_filled.breadth_first_traversal('A') == ['A', 'B', 'C', 'D', 'E', 'F']
+    assert graph_filled.breadth_first_traversal('A') == ['A', 'B', 'D', 'C']
 
 
 def test_traversal_of_empty_graph(graph_empty):
@@ -116,7 +81,7 @@ def test_returns_two_if_graph_two_nodes():
         'A': {},
         'B': {}
     }
-    assert g.breadth_first_traversal('A') == ['A', 'B']
+    assert g.breadth_first_traversal('A') == ['A']
 
 
 def test_breaks_if_no_node_passed_in(graph_empty):

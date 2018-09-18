@@ -1,4 +1,3 @@
-
 class Node(object):
     def __init__(self, value, data=None, left=None, right=None):
         """ Instantiates the first Node
@@ -11,12 +10,12 @@ class Node(object):
     def __str__(self):
         """ Returns a string
         """
-        return f'{self.val}'
+        return f'{self.value}'
 
     def __repr__(self):
         """ Returns a more highly formatted string
         """
-        return f' <Node | Val: {self.val} | Root: {self.root} | Left: {self.left} | Right: {self.right}>'
+        return f' <Node | Value: {self.value} | Data: {self.data} | Left: {self.left} | Right: {self.right} >'
 
 
 class BinaryTree:
@@ -31,12 +30,12 @@ class BinaryTree:
     def __str__(self):
         """ String representation of the BinaryTree
         """
-        return f'{self.val}'
+        return f'{self.value}'
 
     def __repr__(self):
         """ Technical representation of the BinaryTree
         """
-        return f' <Node | Val: {self.val} | Root : {self.root}>'
+        return f' <Node | Value: {self.root.value} | Root : {self.root}>'
 
     def insert(self, val):
         """ Given root node, go left or right, get to child, go left, right or
