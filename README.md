@@ -13,6 +13,7 @@ Start up your python environment, install dependencies including pytest, run the
     - Stack
     - Binary Tree (Not self balancing)
     - Graph
+    - Hash Table
 
 3. Challenges
     - Array_shift (August 2018)
@@ -27,6 +28,9 @@ Start up your python environment, install dependencies including pytest, run the
     - Find Maximum Value in a Binary Tree(September 2018)
     - Breadth First Traversal of a Graph(September 17,2018)
     - Get Edges of a Graph(September 18, 2018)
+    - Depth-First Traversal of a Graph(Septeber 2018)
+    - Repeated Word(September 24, 2018)
+    - Tree Intersection(September 25, 2018)
 
 
 
