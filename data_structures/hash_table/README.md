@@ -9,5 +9,4 @@ Clone the repository, setup your virtual environment using "pipenv shell", "pipe
 Madeline Peters
 
 ## Resources:
-Looked at Kat's hash table which is formatted using a LL instead of a list and went from there.
-https://github.com/katcosgrove/data-structures-and-algorithms/blob/master/data_structures/hash-table/hash_table.py
+Found this helpful video that guided me: https://www.youtube.com/watch?v=9HFbhPscPU0

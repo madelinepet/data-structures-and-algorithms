@@ -5,7 +5,7 @@ class HashTable:
 
     def __init__(self, size=8192):
         self.table_size = size
-        self.hashtable = []
+        self.hashtable = [None] * size
 
     def __repr__(self):
         return(f'Graph: {self.table_size}')
@@ -31,7 +31,21 @@ class HashTable:
             key: the key to store
             value: the value to store
         """
-        return self.hashtable[self.hash_key(key)].insert({key: value})
+        key_hash = self._hash_key(key)
+        key_value = [key, value]
+
+        if self.hashtable[key_hash] is None:
+            self.hashtable[key_hash] = list([key_value])
+            return True
+        else:
+            for pair in self.hashtable[key_hash]:
+                # if it already exists, update val
+                if pair[0] == key:
+                    pair[1] = value
+                    return True
+            # append new key
+            self.hashtable[key_hash].append(key_value)
+            return True
 
     def get(self, key):
         """Retrieve a value from the hash table by key.
@@ -39,14 +53,12 @@ class HashTable:
             key: a string to find the value in the hash table
         returns: the value stored with the key
         """
-        count = 0
-        current = self.hashtable[self.hash_key(key)][count]
-
-        while len(current):
-            if key in current.value.keys():
-                return current.value[key]
-            count += 1
-            current = self.hashtable[self.hash_key(key)][count]
+        key_hash = self._hash_key(key)
+        if self.hashtable[key_hash] is not None:
+            for pair in self.hashtable[key_hash]:
+                if pair[0] == key:
+                    return pair[1]
+        return('Value not in table')
 
     def remove(self, key):
         """Retrieve and remove a value from the hash table by key.
@@ -54,22 +66,15 @@ class HashTable:
             key: a string to find the value in the hash table
         returns: the value stored with the key
         """
-        item = self.hashtable[self.hash_key(key)]
-        current = item[0]
-        last = current
-        count = 0
-        while len(current):
-            if key in current.val.keys():
-                if last is not current:
-                    count += 1
-                    last[count] = current[count]
-                else:
-                    item[0] = current[count]
-            try:
-                return current.val[key]
-            except KeyError:
-                return []
+        key_hash = self._hash_key(key)
+        if self.hashtable[key_hash] is None:
+            return('False')
+        for i in range(0, len(self.hashtable[key_hash])):
+            if self.hashtable[key_hash][i][0] == key:
+                self.hashtable[key_hash].pop(i)
+                return('True')
 
-            last = current
-            count += 1
-            current = current[count]
+    def state_contents(self):
+        for item in self.hashtable:
+            if item is not None:
+                print(item)
