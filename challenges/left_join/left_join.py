@@ -85,21 +85,22 @@ class HashTable:
 
 
 def left_join(ht_synonym, ht_antonym):
-    """ LEFT JOINs two hashmaps into a single data structure
+    """ LEFT JOINs two hashmaps into a single hashmap
     """
     output = []
     contents = ht_synonym.hashtable
     for i in range(0, len(contents)):
         row = []
         # if is a key, get value
-        if i is not None:
-            synonym = ht_synonym.get(contents[i])
-            row.append(contents[i])
+        if contents[i] is not None:
+            # import pdb; pdb.set_trace()
+            synonym = ht_synonym.get(contents[i][0][0])
+            row.append(contents[i][0][0])
             row.append(synonym)
-            if ht_antonym.get(contents[i]) == 'Value not in table':
+            if ht_antonym.get(contents[i][0][0]) == 'Value not in table':
                 row.append('Null')
             else:
-                row.append(ht_antonym.get(contents[i]))
+                row.append(ht_antonym.get(contents[i][0][0]))
         else:
             continue
         output.append(row)

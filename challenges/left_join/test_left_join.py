@@ -35,7 +35,7 @@ def test_all_values_correspond():
     ht_antonym.set('Happy', 'Sad')
     ht_synomym.set('Sad', 'Sorrowful')
     ht_antonym.set('Sad', 'Happy')
-    assert left_join(ht_synomym, ht_antonym) == []
+    assert left_join(ht_synomym, ht_antonym) == [['Sad', 'Sorrowful', 'Happy'], ['Happy', 'Joyful', 'Sad']]
 
 
 def test_extra_in_synonyms_gives_null_antonym():
@@ -46,7 +46,7 @@ def test_extra_in_synonyms_gives_null_antonym():
     ht_synomym.set('Sad', 'Sorrowful')
     ht_antonym.set('Sad', 'Happy')
     ht_synomym.set('extra', 'value')
-    assert left_join(ht_synomym, ht_antonym) == []
+    assert left_join(ht_synomym, ht_antonym) == [['Sad', 'Sorrowful', 'Happy'], ['extra', 'value', 'Null'], ['Happy', 'Joyful', 'Sad']]
 
 
 def test_extra_in_antonym_ignored():
@@ -57,4 +57,4 @@ def test_extra_in_antonym_ignored():
     ht_synomym.set('Sad', 'Sorrowful')
     ht_antonym.set('Sad', 'Happy')
     ht_antonym.set('extra', 'value')
-    assert left_join(ht_synomym, ht_antonym) == []
+    assert left_join(ht_synomym, ht_antonym) == [['Sad', 'Sorrowful', 'Happy'], ['Happy', 'Joyful', 'Sad']]
