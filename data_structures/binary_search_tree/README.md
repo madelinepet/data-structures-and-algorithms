@@ -10,5 +10,3 @@ Madeline Peters
 ## Resources
 Scott
 
-![Whiteboard image ](/assets/binary_search_tree.jpg)
-
