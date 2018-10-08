@@ -34,7 +34,10 @@ Start up your python environment, install dependencies including pytest, run the
     - Left Join of two hash tables (Sept 26, 2018)
 
 3. Sorting Algorithms
-    - Selection sort
+    - Selection Sort
+    - Merge Sort
+    - Quicksort
+    - Radix Sort
 
 
 
