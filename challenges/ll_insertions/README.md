@@ -1,5 +1,5 @@
-# Array Binary Search
-Create a function called binary_search that takes in arguments (sorted array, key) and returns index if a value is in an array, else returns -1.
+# Linked List Insertions
+Methods to add a value at the beginning, before a value, after a value, and at the end of a linked list.
 
 ## Paired with Chris Chapman, Stephen Harper, Nick Damberg
 
