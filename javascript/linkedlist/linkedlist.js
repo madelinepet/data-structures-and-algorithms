@@ -118,22 +118,16 @@ class LinkedList {
 }
 
 LinkedList.prototype.kthFromEnd = function(ll, k) {
-    if (ll.head) {
-        var counter = 0;
+    if(ll.head) {
+        var counter = (ll.length - k);
         var currentNode = ll.head;
-        while (currentNode && currentNode.next) {
-            counter += 1;
+        while(counter > 1) {
             currentNode = currentNode.next;
+            counter -= 1;
         }
-        if (k > counter) {
-            return('exception')
-        }
-        var r = counter - (k - 1);
-        currentNode = ll.head;
-        while (counter < r) {
-            currentNode = currentNode.next;
-            counter += 1;
-        }
-        return currentNode.val;
+        return(currentNode.val);
+    }
+    else {
+        return(-1);
     }
 };
