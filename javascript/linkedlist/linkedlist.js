@@ -131,3 +131,23 @@ LinkedList.prototype.kthFromEnd = function(ll, k) {
         return(-1);
     }
 };
+
+LinkedList.prototype.llMerge = function(ll, llTwo) {
+    // start at the heads
+    let currentOne = ll.head;
+    let currentTwo = llTwo.head;
+
+    while (currentOne && currentTwo) {
+        var temp = currentOne.next;
+        // assign next of ll to next of llTwo
+        currentOne.next = currentTwo;
+        var temp2 = currentTwo.next;
+        // assign next of ll to former next of ll
+        currentTwo.next = temp;
+        currentOne = temp;
+        currentTwo = temp2;
+
+
+    }
+    return ll.head;
+};
