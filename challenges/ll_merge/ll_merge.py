@@ -111,8 +111,4 @@ class LinkedList(object):
             ll_two.head = ll_two_current
 
         except None:
-            'Not valid imput'
-
-
-
-
+            'Not valid input'
