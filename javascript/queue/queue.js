@@ -27,6 +27,16 @@ class Queue {
         this.length += 1;
         return val;
     }
+    dequeue(val) {
+        if (this.queue.length > 0) {
+            this.length -= 1;
+            var temp = this.front;
+            this.front = this.queue[-1];
+            return (temp);
+        }
+    }
 }
+
+
 
 
